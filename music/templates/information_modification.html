@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息修改</title>
+</head>
+<body>
+<h2 style="position: absolute; left: 425px">个人信息修改</h2>
+<form action="{% url 'information_modification_action' %}" method="post">
+<div style="position: absolute; left: 382px; top: 173px;">
+    {% csrf_token %}
+    <label>昵称：
+        <input type="text" name="user_name" value="{{ user.user_name }}" >
+    </label>
+    <br/>
+    <br/>
+    <label>个人介绍：
+        <input type="text" name="user_introduction" value="{{ user.user_introduction }}">
+    </label>
+    <br/>
+    <br/>
+    <label>邮箱：
+        <input type="text" name="user_email" value="{{ user.user_email }}">
+    </label>
+    <br/>
+    <br/>
+    <input type="submit" name="修改" value="修改">
+    <a>{{ msg }}</a>
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询结果</title>
+
+    <script language="javascript" type="text/javascript">
+        window.onload = function(){
+        var oTable = document.getElementById("num");
+        for(var i=0;i<oTable.rows.length;i++){
+        oTable.rows[i].cells[0].innerHTML = (i+1);
+                            }
+        }
+    </script>
+
+<style>
+body{
+    {% load static %}
+	background-image:url("{% static "登录界面背景.jpg"%}");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+</style>
+</head>
+<body>
+<form action="{% url 'query_interlinkage' %}" method="post">
+{% csrf_token %}
+    <div style="position: absolute; left: 690px; color: #fff"><h2>查询结果</h2></div>
+<div style="position: absolute; left: 90px; top: 60px; background: darkgrey; text-align: center">
+<table width="1300px" border="1">
+    <tr>
+        <th width="100px">序号</th>
+        <th width="100px">歌名</th>
+        <th width="100px">歌手</th>
+        <th width="100px">作词</th>
+        <th width="100px">作曲</th>
+        <th width="100px">时长</th>
+        <th width="100px">播放平台</th>
+        <th width="100px">是否需要VIP</th>
+        <th width="100px">是否付费</th>
+        <th width="100px">费用</th>
+        <th width="100px">音质</th>
+        <th width="100px">查看链接</th>
+        <th width="100px">收藏</th>
+    </tr>
+</table>
+
+<table width="1300px" border="1">
+<tbody id="num">
+{% for song in songs %}
+    <tr>
+        <td width="100px"><a></a></td>
+        <td width="100px"><a>{{ song.song_name}}</a></td>
+        <td width="100px"><a>{{ song.singer }}</a></td>
+        <td width="100px"><a>{{ song.lyrics_maker }}</a></td>
+        <td width="100px"><a>{{ song.composer }}</a></td>
+        <td width="100px"><a>{{ song.time }}</a></td>
+        <td width="100px"><a>{{ song.software }}</a></td>
+        <td width="100px"><a>{{ song.need_VIP }}</a></td>
+        <td width="100px"><a>{{ song.need_pay }}</a></td>
+        <td width="100px"><a>{{ song.payment }}</a></td>
+        <td width="100px"><a>{{ song.tone_quality }}</a></td>
+        <td width="100px"><input type="submit" name="查看链接" value="{{ song.song_ID }}" ></td>
+        <td width="100px"><input type="submit" name="收藏" value="{{ song.song_ID }}" ></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</form>
+</body>
+</html>

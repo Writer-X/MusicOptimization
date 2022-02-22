@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body{
+    {% load static %}
+	background-image:url("{% static "CTOP.jpg"%}");
+	background-repeat:no-repeat;
+	background-size: 1000%;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>CTOP</title>
+
+    <script language="javascript" type="text/javascript">
+        window.onload = function(){
+        var oTable = document.getElementById("num");
+        for(var i=0;i<oTable.rows.length;i++){
+        oTable.rows[i].cells[0].innerHTML = (i+1);
+                            }
+        }
+    </script>
+</head>
+<body>
+
+<div style="position: absolute; left: 50px; text-align: center;">
+<table width="900px" border="1">
+    <tr>
+        <th width="225px">序号</th>
+        <th width="225px">歌曲编号</th>
+        <th width="225px">歌名</th>
+        <th width="225px">点击量</th>
+    </tr>
+</table>
+
+<table width="900px" border="1">
+<tbody id="num">
+{% for song in songs %}
+    <tr>
+        <td width="225px"><a></a></td>
+        <td width="225px"><a>{{ song.song_ID }}</a></td>
+        <td width="225px"><a>{{ song.song_name }}</a></td>
+        <td width="225px"><a>{{ song.click_number }}</a></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</body>
+<ml>

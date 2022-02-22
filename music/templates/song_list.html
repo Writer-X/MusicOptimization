@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body{
+    {% load static %}
+	background-image:url("{% static "推荐歌单界面.jpg"%}");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>推荐歌单</title>
+
+    <script language="javascript" type="text/javascript">
+        window.onload = function(){
+        var oTable = document.getElementById("num");
+        for(var i=1;i<=oTable.rows.length;i++){
+        oTable.rows[i].cells[0].innerHTML = (i);
+                            }
+        }
+    </script>
+</head>
+<body>
+<form action="{% url 'list' %}" method="post">
+{% csrf_token %}
+<div style="position: absolute; left: 200px; text-align: center;">
+<table width="600px" border="1">
+<tbody id="num">
+<tr>
+    <th width="300px">序号</th>
+    <th width="300px">歌单名称（点击即可跳转相应歌单哦>v<)</th>
+</tr>
+{% for songlist in song_lists %}
+    <tr>
+        <td width="300px"></td>
+        <td width="300px"><input type="submit" name="查看歌单" value={{ songlist }}></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</form>
+</body>
+</html>

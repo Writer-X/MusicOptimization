@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找回密码</title>
+
+<style>
+body{
+    {% load static %}
+	background-image:url("{% static "登录界面背景.jpg"%}");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+</style>
+</head>
+<body>
+<form action="{% url 'input_double_password' %}" method="post">
+    {% csrf_token %}
+    <div style="position: absolute; left: 675px; top: 250px">
+    <label><div style="color:#fff">请输入收到的验证码：</div>
+        <input type="text" name="user_verification">
+    </label>
+    <br/>
+    <br/>
+    <input type="submit" name="验证" value="验证">
+    <a>{{ msg }}</a>
+    </div>
+</form>
+</body>
+</html>

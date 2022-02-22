@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <style>
+body{
+    {% load static %}
+	background-image:url("{% static "我的收藏.jpg"%}");
+	background-repeat:no-repeat;
+	background-size: auto;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>我的收藏</title>
+
+    <script language="javascript" type="text/javascript">
+        window.onload = function(){
+        var oTable = document.getElementById("num");
+        for(var i=1;i<=oTable.rows.length;i++){
+        oTable.rows[i].cells[0].innerHTML = (i);
+                            }
+        }
+    </script>
+</head>
+<body>
+
+<div style="position: absolute; left: 50px; text-align: center">
+<form action="{% url 'collection_delete' %}" method="post">
+{% csrf_token %}
+<table width="1400px" border="1">
+<tbody id="num">
+<tr>
+        <th width="100px">序号</th>
+        <th width="100px">勾选框</th>
+        <th width="100px">歌名</th>
+        <th width="100px">歌手</th>
+        <th width="100px">作词</th>
+        <th width="100px">作曲</th>
+        <th width="100px">时长</th>
+        <th width="100px">播放平台</th>
+        <th width="100px">是否需要VIP</th>
+        <th width="100px">是否付费</th>
+        <th width="100px">费用</th>
+        <th width="100px">音质</th>
+        <th width="100px">链接</th>
+        <th width="100px">删除</th>
+</tr>
+{% for song in songs %}
+    <tr>
+        <td width="100px"><a></a></td>
+        <td width="100px"><input type="checkbox" name="歌单歌曲" value="{{ song.song_ID }}"></td>
+        <td width="100px"><a>{{ song.song_name }}</a></td>
+        <td width="100px"><a>{{ song.singer }}</a></td>
+        <td width="100px"><a>{{ song.lyrics_maker }}</a></td>
+        <td width="100px"><a>{{ song.composer }}</a></td>
+        <td width="100px"><a>{{ song.time }}</a></td>
+        <td width="100px"><a>{{ song.software }}</a></td>
+        <td width="100px"><a>{{ song.need_VIP }}</a></td>
+        <td width="100px"><a>{{ song.need_pay }}</a></td>
+        <td width="100px"><a>{{ song.payment }}</a></td>
+        <td width="100px"><a>{{ song.tone_quality }}</a></td>
+        <td width="100px"><a>{{ song.interlinkage }}</a></td>
+        <td width="100px"><input type="submit" name="删除" value="{{ song.song_ID }}" ></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+    <h1>{{ msg }}</h1>
+<h3>生成歌单</h3>
+<input type="text" name="list_name" value="请勾选歌曲并输入歌单名称">
+<input type="submit" name="生成歌单" value='生成歌单'>
+</div>
+</form>
+
+</body>
+</html>

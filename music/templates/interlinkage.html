@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<style>
+body{
+    {% load static %}
+	background-image:url("{% static "登录界面背景.jpg"%}");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+</style>
+</head>
+<body>
+<div style="position: absolute; left: 625px; top: 250px">
+    <div style="color: #fff">该首歌的链接为：</div>
+    <br/>
+<a style="color: #fff">{{ song.interlinkage }}</a>
+</div>
+</body>
+<ml>

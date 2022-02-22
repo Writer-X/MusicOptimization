@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入用户名</title>
+
+<style>
+body{
+    {% load static %}
+	background-image:url("{% static "登录界面背景.jpg"%}");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+</style>
+</head>
+<body>
+<form action="{% url 'input_user_account_action' %}" method="post">
+    {% csrf_token %}
+    <div style="position: absolute; left: 675px; top: 250px">
+    <label><div style="color: #fff">请输入用户名：</div>
+        <input type="text" name="user_account">
+    </label>
+    <br/>
+        <br/>
+    <input type="submit" name="提交" value="提交">
+    </div>
+</form>
+</body>
+<ml>

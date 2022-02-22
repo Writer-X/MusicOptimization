@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加音乐人</title>
+</head>
+<body>
+<form action="{% url 'add_musician_action' %}"  method="post">
+    {% csrf_token %}
+    <div style="position: absolute; left: 400px;">
+     <h3>请输入音乐人信息：</h3>
+    <br/>
+    <label>姓名：
+        <input type="text" name="musician_name">
+    </label>
+    <br/>
+        <br/>
+    <label>性别：
+        <input type="text" name="musician_sex">
+    </label>
+    <br/>
+        <br/>
+    <label>年龄：
+        <input type="text" name="musician_age">
+    </label>
+    <br/>
+        <br/>
+    <label>类别：
+        <input type="text" name="musician_kind">
+    </label>
+    <br/>
+        <br/>
+    <input type="submit" name="添加" value="添加">
+        <a>{{ msg }}</a>
+    </div>
+
+</form>
+</body>
+</html>

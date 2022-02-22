@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body{
+    {% load static %}
+	background-image:url("{% static "推荐歌单界面.jpg"%}");
+	background-repeat:no-repeat;
+	background-size: 150%;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>歌单歌曲</title>
+
+    <script language="javascript" type="text/javascript">
+        window.onload = function(){
+        var oTable = document.getElementById("num");
+        for(var i=1;i<=oTable.rows.length;i++){
+        oTable.rows[i].cells[0].innerHTML = (i);
+                            }
+        }
+    </script>
+</head>
+<body>
+<h3>歌单歌曲一览</h3>
+
+<div style="position: absolute; text-align: center;">
+<table width="1200px" border="1">
+<tbody id="num">
+<tr>
+    <th>序号</th>
+    <th>歌名</th>
+    <th>歌手</th>
+    <th>作词</th>
+    <th>作曲</th>
+    <th>时长</th>
+    <th>播放平台</th>
+    <th>是否需要VIP</th>
+    <th>是否付费</th>
+    <th>费用</th>
+    <th>音质</th>
+    <th>链接</th>
+</tr>
+{% for song in songs %}
+    <tr>
+        <td></td>
+        <td><a>{{ song.song_name}}</a></td>
+        <td><a>{{ song.singer }}</a></td>
+        <td><a>{{ song.lyrics_maker }}</a></td>
+        <td><a>{{ song.composer }}</a></td>
+        <td><a>{{ song.time }}</a></td>
+        <td><a>{{ song.software }}</a></td>
+        <td><a>{{ song.need_VIP }}</a></td>
+        <td><a>{{ song.need_pay }}</a></td>
+        <td><a>{{ song.payment }}</a></td>
+        <td><a>{{ song.tone_quality }}</a></td>
+        <td><a>{{ song.interlinkage }}</a></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</body>
+</html>

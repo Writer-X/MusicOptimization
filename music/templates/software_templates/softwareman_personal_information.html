@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body{
+    {% load static %}
+	background-image:url("{% static "用户信息界面.jpg"%}");
+	background-repeat:no-repeat;
+	background-size: 120% ;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>软件负责人个人信息</title>
+</head>
+<body>
+<div style="position: absolute; left: 150px; text-align: center;">
+<table width="750px" border="1">
+    <tr>
+        <td>姓名</td>
+        <td><a>{{ user.software_man_name }}</a></td>
+    </tr>
+    <tr>
+        <td>年龄</td>
+        <td><a>{{ user.software_man_age}}</a></td>
+    </tr>
+    <tr>
+        <td>性别</td>
+        <td><a>{{ user.software_man_sex }}</a></td>
+    </tr>
+    <tr>
+        <td>邮箱</td>
+        <td><a>{{ user.software_man_email }}</a></td>
+    </tr>
+    <tr>
+        <td>联系电话</td>
+        <td><a>{{ user.software_man_phone }}</a></td>
+    </tr>
+</table>
+</div>
+</body>
+<html>

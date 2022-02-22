@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加歌曲</title>
+</head>
+<body>
+
+<form action="{% url 'add_songs_action' %}" method="post">
+    {% csrf_token %}
+    <div style="position: absolute; left: 350px;">
+    <h2>请输入添加歌曲的信息：</h2>
+        <br/>
+    <label>歌名：
+        <input type="text" name="song_name">
+    </label>
+    <br/>
+    <br/>
+    <label>歌手：
+        <input type="text" name="singer">
+    </label>
+    <br/>
+    <br/>
+    <label>作词人：
+        <input type="text" name="lyrics_maker">
+    </label>
+    <br/>
+    <br/>
+    <label>作曲人：
+        <input type="text" name="composer">
+    </label>
+    <br/>
+    <br/>
+    <label>时长：
+        <input type="text" name="time">
+    </label>
+    <br/>
+    <br/>
+    <label>是否需要VIP：
+        <input type="text" name="need_VIP">
+    </label>
+    <br/>
+    <br/>
+    <label>是否需要单独付费：
+        <input type="text" name="need_pay">
+    </label>
+    <br/>
+    <br/>
+    <label>总费用：
+        <input type="text" name="payment">
+    </label>
+    <br/>
+    <br/>
+    <label>音质：
+        <input type="text" name="tone_quality">
+    </label>
+    <br/>
+    <br/>
+    <label>链接：
+        <input type="text" name="interlinkage">
+    </label>
+    <br/>
+    <br/>
+    <input type="submit" name="添加" value="添加" >
+         <a>{{ msg }}</a>
+    </div>
+</form>
+</body>
+</html>

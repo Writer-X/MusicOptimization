@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body{
+    {% load static %}
+	background-image:url("{% static "用户信息界面.jpg"%}");
+	background-repeat:no-repeat;
+	background-size: 120% ;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+</head>
+<body>
+<div style="position: absolute; left: 50px">
+<table width="900px" height="600px" border="1" style="text-align: center">
+    <tr>
+        <td width="200px">用户名</td>
+        <td width="700px"><a>{{ user.user_account }}</a></td>
+    </tr>
+    <tr>
+        <td width="200px">昵称</td>
+        <td width="700px"><a>{{ user.user_name }}</a></td>
+    </tr>
+    <tr>
+        <td width="200px">个人介绍</td>
+        <td width="700px"><a>{{ user.user_introduction }}</a></td>
+    </tr>
+    <tr>
+        <td width="200px">邮箱</td>
+        <td width="700px"><a>{{ user.user_email }}</a></td>
+    </tr>
+</table></div>
+<div style="display: block; width: 200px; height: 50px; position: absolute; left: 350px; top: 650px">
+<a href={% url 'information_modification' %}>修改个人信息</a>
+</div>
+<div style="display: block; width: 200px; height: 50px; position: absolute; left: 500px; top: 650px">
+<a href={% url 'password_modification' %}>修改密码</a>
+</div>
+
+</body>
+</html>

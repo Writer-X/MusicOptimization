@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+body{
+    {% load static %}
+	background-image:url("{% static "STOP.jpg"%}");
+	background-repeat:no-repeat;
+	background-size: 140%;
+}
+</style>
+
+    <meta charset="UTF-8">
+    <title>STOP</title>
+
+    <script language="javascript" type="text/javascript">
+        window.onload = function(){
+        var oTable = document.getElementById("num");
+        for(var i=0;i<oTable.rows.length;i++){
+        oTable.rows[i].cells[0].innerHTML = (i+1);
+                            }
+        }
+    </script>
+</head>
+<body>
+
+<div style="position: absolute; left: 50px; text-align: center;">
+<table border="1" width="900px">
+    <tr>
+        <th width="300px">序号</th>
+        <th width="300px">歌名</th>
+        <th width="300px">搜索量</th>
+    </tr>
+</table>
+
+<table border="1" width="900px">
+    <tbody id="num">
+{% for song in songs %}
+    <tr>
+        <td width="300px"><a></a></td>
+        <td width="300px"><a>{{ song.song_name }}</a></td>
+        <td width="300px"><a>{{ song.search_number }}</a></td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+</div>
+</body>
+<html>
